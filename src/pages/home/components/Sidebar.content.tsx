@@ -2,6 +2,7 @@ import { BiHappyHeartEyes } from "react-icons/bi";
 import styles from "../../../utils/customStyles.module.css";
 import { Fragment } from "react";
 import { FavoritedItem } from "../../../components/FavoritedItem";
+import Characters from "./sidebar/Characters";
 
 export default function SidebarContent() {
   return (
@@ -11,17 +12,7 @@ export default function SidebarContent() {
         <BiHappyHeartEyes className="text-yellow-500" />
       </div>
 
-      <div
-        className={`${styles.custom_scrollbar} grid h-full overflow-y-scroll gap-4 mt-4 px-6`}
-      >
-        {Array.from({ length: 3 }).map((j, i) => (
-          <Fragment key={i}>
-            <div className="h-[200px]">
-                <FavoritedItem />
-            </div>
-          </Fragment>
-        ))}
-      </div>
+      <Characters/>
     </div>
   );
 }

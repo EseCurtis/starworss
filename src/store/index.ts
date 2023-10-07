@@ -1,12 +1,15 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './rootReducer';
 
-const combinedReducers = combineReducers({
-  root: rootReducer,
-});
 
 const store = configureStore({
-  reducer: combinedReducers,
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['FETCH_ALL_CHARACTERS'],
+      },
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

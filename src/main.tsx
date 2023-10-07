@@ -5,6 +5,8 @@ import store from './store'
 import App from './App.tsx'
 import './index.css'
 
+store.dispatch({ type: "FETCH_ALL_CHARACTERS", payload: { dispatcher: store.dispatch } })
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
