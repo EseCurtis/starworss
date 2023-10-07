@@ -1,9 +1,10 @@
 .custom_scrollbar {
-    --scrollbar-color: #353b4233;
+    --scrollbar-color: #ccdff533;
 
     /* For WebKit (Chrome, Safari) */
     &::-webkit-scrollbar {
         width: 6px;
+        height: 7px;
     }
 
     &::-webkit-scrollbar-thumb {

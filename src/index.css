@@ -6,3 +6,10 @@
   font-family: "Poppins";
 }
 
+* {
+  box-sizing: border-box;
+}
+
+.font-star-wars {
+  font-family: 'Star Wars', sans-serif;
+}

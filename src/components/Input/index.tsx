@@ -5,7 +5,7 @@ interface BasicInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const BasicInput: FC<BasicInputProps> = ({ twStyles, ...restProps }) => {
-  return <input className={`${twStyles} bg-red-200`} type="text" {...restProps} />;
+  return <input className={`${twStyles}`} type="text" {...restProps} />;
 };
 
 export default BasicInput;
