@@ -13,7 +13,7 @@ export default function SidebarContent() {
         </h1>
       </div>
 
-      <div className="flex gap-2 items-center justify-start text-[17px] px-8 mt-5 pb-5">
+      <div className="flex gap-2 items-center justify-start text-[17px] px-8 mt-9 pb-5">
         <h1 className="font-bold-sm min-[300px]:text-[12px]">Your Favorites</h1>
         <BiSolidBookmark className="text-yellow-500" />
       </div>

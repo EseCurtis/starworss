@@ -32,7 +32,7 @@ export const FavoritedItem: FC<FavoritedItemProps> = ({ data }) => {
 
   return (
     <div
-      className=" h-full rounded-lg flex flex-col gap-2 p-2 hover:opacity-90 transition-[0.4s] text-black max-[1050px]:pl-0"
+      className=" h-full rounded-lg flex flex-col gap-1 p-2 hover:opacity-90 transition-[0.4s] text-black max-[1050px]:pl-0"
     >
       <div className=" border-2 border-[#ffffff10] w-full block flex-col p-3 backdrop-blur-xl text-white bg-black/10 rounded-lg">
         <div className="flex gap-2">

@@ -16,7 +16,7 @@ export default function Favorites() {
 
   return (
     <div
-        className="grid h-full gap-1 px-6 max-[1050px]:flex max-[1050px]:pl-0"
+        className="grid h-full gap-1 px-6 max-[1050px]:flex max-[1050px]:pl-0 pt-3"
       >
         {!characters
           ? Array.from({ length: 15 }).map((j: any, i: number) => (
