@@ -21,7 +21,7 @@ export default function Favorites() {
         {!characters
           ? Array.from({ length: 15 }).map((j: any, i: number) => (
               <Fragment key={`skeleton_${i}`}>
-                <div className="h-[200px]">
+                <div className="h-[auto] max-[1050px]:w-[100%] l-animate--fade-in-up ">
                   <FavoritedItem_skeleton />
                 </div>
               </Fragment>

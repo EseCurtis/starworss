@@ -11,12 +11,12 @@ export default function MainContent() {
         <div className="w-full relative z-10">
           <Header/>
         </div>
-        <div className="flex gap-2 items-center justify-start text-[17px] mt-5 pb-5">
+        <div className="flex gap-2 items-center justify-start text-[17px] mt-5 pb-5 min-[300px]:pl-0">
           <BiGlobe className="text-yellow-500" />
-          <h1 className="font-bold-sm">All Characters</h1>
+          <h1 className="font-bold-sm  min-[300px]:text-[12px]  ">All Characters</h1>
         </div>
         <div
-          className={`${styles.custom_scrollbar} overflow-y-auto h-full pb-2`}
+          className={`${styles.custom_scrollbar} overflow-y-auto h-full pb-2 max-[1050px]:overflow-y-auto`}
         >
           <Characters />
         </div>
