@@ -4,11 +4,11 @@ import { BsGenderTrans } from "react-icons/bs";
 import Info from "./components/Info";
 import SkeletonLine from "../SkeletonLine";
 
-const LisitingItemTwStyles = "w-full h-full  flex justify-center flex-col gap-2 p-2  bg-[#0000004f] backdrop-blur-xl border border-white/10  rounded-lg text-white"
+const LisitingItemTwStyles = "w-full  flex justify-center flex-col gap-2 p-2  bg-[#0000004f] backdrop-blur-xl border border-white/10  rounded-lg text-white"
 
 export const LisitingItem_skeleton = () => {
   return (
-    <div className={LisitingItemTwStyles}>
+    <div className={`h-auto ${LisitingItemTwStyles}`}>
       <div className="w-full  flex flex-col p-3 bg-[#ffffff00] rounded-lg gap-1">
         {Array.from({ length: 3 }).map((item: any, i: any) => (
           <SkeletonLine key={i} />

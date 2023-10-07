@@ -16,7 +16,7 @@ export default function MainContent() {
           <h1 className="font-bold-sm  min-[300px]:text-[12px]  ">All Characters</h1>
         </div>
         <div
-          className={`${styles.custom_scrollbar} overflow-y-auto h-full pb-2 max-[1050px]:overflow-y-auto`}
+          className={`${styles.custom_scrollbar} overflow-y-auto h-full pb-2`}
         >
           <Characters />
         </div>
