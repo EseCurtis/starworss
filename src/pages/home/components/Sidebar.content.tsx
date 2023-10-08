@@ -1,5 +1,5 @@
 import { BiSolidRocket, BiSolidBookmark } from "react-icons/bi";
-import styles from "../../../utils/customStyles.module.css";
+import styles from "@/utils/customStyles.module.css";
 import Favorites from "./sidebar/Favorites";
 
 export default function SidebarContent() {

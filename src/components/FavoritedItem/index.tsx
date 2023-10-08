@@ -4,21 +4,9 @@ import SkeletonLine from "../SkeletonLine";
 
 export const FavoritedItem_skeleton = () => {
   return (
-    <div className="border-2 border-[#ffffff10] w-full block flex-col p-3 backdrop-blur-xl text-white bg-black/10 rounded-lg">
-        <div className="flex gap-2">
-          <b className="flex items-center gap-[2px]">
-            <SkeletonLine /> 
-          </b>
-          <p className="max-[1050px]:whitespace-nowrap min-[300px]:text-[12px]">
-            <SkeletonLine /> 
-          </p>
-          <div className="flex items-center gap-4 ml-auto">
-            <SkeletonLine /> 
-            <div className="chevron">
-              <SkeletonLine /> 
-            </div>
-          </div>
-        </div>
+    <div className="w-full block  p-3 backdrop-blur-xl text-white bg-black/10 rounded-lg">
+        <SkeletonLine /> 
+        <p className="opacity-0 h-0">..........</p>
       </div>
   );
 };

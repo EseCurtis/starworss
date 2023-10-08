@@ -1,4 +1,4 @@
-import BasicInput from "../../../../components/Input";
+import BasicInput from "@/components/Input";
 
 export default function Header() {
   return (
