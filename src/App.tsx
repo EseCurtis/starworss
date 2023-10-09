@@ -7,6 +7,7 @@ import {
 import "./App.css";
 import Home from "./pages/home";
 import Character from "./pages/character";
+import Search from "./pages/search";
 
 export default function App() {
   const appRouter = createBrowserRouter(
@@ -15,6 +16,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/:page" element={<Home />} />
         <Route path="/character" element={<Character />} />
+        <Route path="/character/:characterId" element={<Character />} />
+        <Route path="/search" element={<Search />} />
       </>
     )
   );

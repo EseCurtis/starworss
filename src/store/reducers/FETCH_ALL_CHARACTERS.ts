@@ -2,9 +2,9 @@ import $_GET from "@/helpers/$_GET";
 import BASIC_FETCH from "@/store/actions/BASIC_FETCH";
 import { StateType } from "@/store/initalState";
 
-const FETCH_ALL_CHARACTERS = (state: StateType, { currentPage, dispatcher }: any): StateType => {
+const FETCH_ALL_CHARACTERS = (state: StateType, { currentPage, dispatcher, alternateEndpoint }: any): StateType => {
 
-    BASIC_FETCH(`${state.characters_api_url}/?page=${currentPage}`)
+    BASIC_FETCH(alternateEndpoint || `${state.characters_api_url}/?page=${currentPage}`)
         .then((response) => {
             dispatcher({
                 type: "POPULATE_PAGINATION_DATA", payload: {
@@ -21,8 +21,12 @@ const FETCH_ALL_CHARACTERS = (state: StateType, { currentPage, dispatcher }: any
             dispatcher({ type: "CHARACTERS_FETCH:STATUS", payload: { status: "SUCCESS" } })
         })
         .catch((error) => {
-            console.error(error)
-            dispatcher({ type: "CHARACTERS_FETCH:STATUS", payload: { status: "ERROR", message: error.toString() } })
+            let message = error.toString()
+            if (error.message === 'Network response was not ok') {
+                message = "Sorry, No Resource to show.."
+            }
+
+            dispatcher({ type: "CHARACTERS_FETCH:STATUS", payload: { status: "ERROR", message } })
         })
 
     return { ...state, charactersFetchStatus: "LOADING" };

@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import $_GET from "@/helpers/$_GET";
 
 export default function Character() {
-  const characterId = $_GET("characterId");
+  const { characterId } = useParams();
   const dispatcher = useDispatch();
 
   useEffect(() => {

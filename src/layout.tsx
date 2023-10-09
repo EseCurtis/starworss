@@ -33,7 +33,7 @@ export default function Layout({
 
       {/* Sidebar and Main Content */}
       <DomCondition condition={!!sidebar}>
-        <div className="w-[100%] text-white h-full min-h-screen sm:grid min-[1050px] grid-cols-4 sm:gap-3 relative z-10 max-[1050px]">
+        <div className="grid grid-cols-1 res1:grid-cols-4 sm:grid-cols-1">
           <Sidebar>{sidebar}</Sidebar>
           <MainPage>{main}</MainPage>
         </div>

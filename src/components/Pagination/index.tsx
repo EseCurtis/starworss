@@ -6,7 +6,7 @@ import DomCondition from "../DomCondition";
 
 const paginationButtonClass = "border border-white/20 p-3 ";
 
-export default function Pagination() {
+export default function Pagination({ urlPattern = "/" }: { urlPattern?: any}) {
   const paginationData = useSelector(
     (state: StateType) => state.paginationData
   );
@@ -39,7 +39,7 @@ export default function Pagination() {
           {currentPage > 1 && (
             <Link
               className={paginationButtonClass}
-              to={`/${Number(currentPage) - 1}`}
+              to={`${urlPattern}${Number(currentPage) - 1}`}
             >
               {"<"}
             </Link>
@@ -51,7 +51,7 @@ export default function Pagination() {
               className={`${paginationButtonClass} ${
                 page === currentPage ? "font-bold" : ""
               }`}
-              to={`/${page}`}
+              to={`${urlPattern}${page}`}
             >
               {page}
             </Link>
@@ -60,7 +60,7 @@ export default function Pagination() {
           {currentPage < count && (
             <Link
               className={paginationButtonClass}
-              to={`/${Number(currentPage) + 1}`}
+              to={`${urlPattern}${Number(currentPage) + 1}`}
             >
               {">"}
             </Link>

@@ -92,7 +92,7 @@ export const ListingItem: FC<FavoritedItemProps> = ({ data }) => {
           Add to Favorites
           <BiBookmark />
         </button>
-        <Link to={`/character?characterId=${itemId}`} className=" min-[300px]:text-[12px] flex items-center justify-center w-full bg-white text-black rounded-full p-3 gap-2">
+        <Link to={`/character/${itemId}`} className=" min-[300px]:text-[12px] flex items-center justify-center w-full bg-white text-black rounded-full p-3 gap-2">
           See More <BiInfoCircle className="text-[16px]" />
         </Link>
       </div>
