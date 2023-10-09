@@ -19,23 +19,24 @@ To get your starworss app up and running, follow these steps:
    git clone https://github.com/esecurtis/starworss-app.git
    ```
 
-Navigate to the project directory:
+2. Navigate to the project directory:
 
-```bash
+   ```bash
    cd starworss-app
-```
-Install project dependencies:
+   ```
+3. Install project dependencies:
 
-```bash
-yarn
-```
+   ```bash
+   yarn
+   ```
 This command will install all the required packages and dependencies.
 
-Start the development server:
+4. Start the development server:
 
-```bash
-yarn dev
-```
+   ```bash
+   yarn dev
+   ```
 
 This command will start the development server, and you should see the starworss app running in your browser at http://localhost:3000.
+You're ready to go!
 
