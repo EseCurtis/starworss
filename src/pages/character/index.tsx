@@ -3,7 +3,6 @@ import MainContent from "./components/Main.content";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import $_GET from "@/helpers/$_GET";
 
 export default function Character() {
   const { characterId } = useParams();

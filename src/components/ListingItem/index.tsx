@@ -68,7 +68,7 @@ export const ListingItem: FC<FavoritedItemProps> = ({ data }) => {
 
   return (
     <div className={LisitingItemTwStyles}>
-      <div className="w-full h-[100px] flex items-start aspect-w-4 aspect-h-3 bg-gray-200 overflow-hidden">
+      <div className="w-full h-[170px] flex items-start bg-gray-200 overflow-hidden">
         <img
           className="object-contain w-full"
           src={`http://localhost:3000/search-images?q=${data?.name}`}

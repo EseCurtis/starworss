@@ -31,17 +31,19 @@ export default function Layout({
         </div>
       </div>
 
-      {/* Sidebar and Main Content */}
-      <DomCondition condition={!!sidebar}>
-        <div className="grid grid-cols-1 res1:grid-cols-4 sm:grid-cols-1">
-          <Sidebar>{sidebar}</Sidebar>
-          <MainPage>{main}</MainPage>
-        </div>
-      </DomCondition>
+      <div className="h-full w-full relative z-20">
+          {/* Sidebar and Main Content */}
+        <DomCondition condition={!!sidebar}>
+          <div className="grid grid-cols-1 res1:grid-cols-4 sm:grid-cols-1">
+            <Sidebar>{sidebar}</Sidebar>
+            <MainPage>{main}</MainPage>
+          </div>
+        </DomCondition>
 
-      <DomCondition condition={!!!sidebar}>
-        <MainPage isSingle={true}>{main}</MainPage>
-      </DomCondition>
+        <DomCondition condition={!!!sidebar}>
+          <MainPage isSingle={true}>{main}</MainPage>
+        </DomCondition>
+      </div>
     </div>
   );
 }
