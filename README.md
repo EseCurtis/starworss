@@ -1,27 +1,41 @@
-# React + TypeScript + Vite
+# starworss App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A website that lets you see and know some information about your favorite starwars characters
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before you begin, ensure you have met the following requirements:
 
-## Expanding the ESLint configuration
+- [Node.js](https://nodejs.org/) installed on your local machine.
+- [Yarn](https://classic.yarnpkg.com/en/docs/install) (or npm) installed.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+To get your starworss app up and running, follow these steps:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+1. Clone this repository to your local machine:
+
+   ```bash
+   git clone https://github.com/esecurtis/starworss-app.git
+   ```
+
+Navigate to the project directory:
+
+```bash
+   cd starworss-app
+```
+Install project dependencies:
+
+```bash
+yarn
+```
+This command will install all the required packages and dependencies.
+
+Start the development server:
+
+```bash
+yarn dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+This command will start the development server, and you should see the starworss app running in your browser at http://localhost:3000.
+
