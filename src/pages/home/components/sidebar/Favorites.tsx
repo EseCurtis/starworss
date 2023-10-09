@@ -18,11 +18,11 @@ export default function Favorites() {
   }, [characters]);
 
   return (
-    <div className="flex h-full gap-1 px-6 md:flex-row res1:flex-row sm:flex-row lg:flex-col xl:flex-col res3:flex-col  max-[1050px]:pl-0 pt-3">
+    <div className="flex h-full gap-1 px-6 md:flex-row sm:flex-row lg:flex-col xl:flex-col res3:flex-col  max-[1050px]:pl-0 pt-3">
       <DomCondition condition={favoritedCharactersFetchStatus == "LOADING"}>
         {Array.from({ length: 15 }).map((j: any, i: number) => (
           <Fragment key={`skeleton_${i}`}>
-            <div className="h-[auto]  max-[1050px]:w-[100%] l-animate--fade-in-up ">
+            <div className={`h-[auto]   max-[1050px]:w-[100%] l-animate--fade-in-up ${j}`}>
               <FavoritedItem_skeleton />
             </div>
           </Fragment>

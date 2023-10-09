@@ -1,16 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
-import { StateType } from "@/store/initalState";
 import { FaTimes } from "react-icons/fa";
 import DomCondition from "@/components/DomCondition";
 import { Link, useNavigate } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 
-interface SearchBoxProps {
-  // Add any props you might have here
-}
-
-export default function SearchBox(props: SearchBoxProps) {
+export default function SearchBox() {
   const [searchInput, setSearchInput] = useState<string>("");
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
   const [historyVisible, setHistoryVisible] = useState<boolean>(false);

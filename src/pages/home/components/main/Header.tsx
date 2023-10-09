@@ -1,6 +1,4 @@
-import BasicInput from "@/components/Input";
 import Pagination from "@/components/Pagination";
-import { FaTimes } from "react-icons/fa";
 import SearchBox from "./SearchBox";
 
 export default function Header() {

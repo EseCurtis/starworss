@@ -1,5 +1,4 @@
 import Characters from "@/pages/home/components/main/Characters";
-import Header from "@/pages/home/components/main/Header";
 import { BiGlobe } from "react-icons/bi";
 import { useSearchParams } from "react-router-dom";
 import styles from "@/utils/customStyles.module.css";

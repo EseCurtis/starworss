@@ -1,13 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { BiChevronLeft, BiRuler, BiDumbbell, BiPalette, BiCalendar, BiWorld, BiCameraMovie, BiDna, BiCar, BiRocket, BiTimeFive, BiLink, BiSolidRocket, BiSmile, BiSleepy, BiSolidEyedropper, BiSolidBookmark, BiBookmark, BiInfoCircle } from "react-icons/bi";
+import { useEffect, useState } from "react";
+import {
+  BiChevronLeft,
+  BiRuler,
+  BiDumbbell,
+  BiPalette,
+  BiCalendar,
+  BiWorld,
+  BiCameraMovie,
+  BiDna,
+  BiCar,
+  BiRocket,
+  BiTimeFive,
+  BiLink,
+  BiSolidRocket,
+  BiSmile,
+  BiSolidEyedropper,
+  BiSolidBookmark,
+  BiBookmark
+} from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DomCondition from "@/components/DomCondition";
 import styles from "@/utils/customStyles.module.css";
 import BrandLogo from "@/components/Brand";
 import InfoField from "@/components/InfoField";
 import { StateType } from "@/store/initalState";
-
 
 const propertyIcons: { [key: string]: JSX.Element } = {
   name: <BiRuler />,
@@ -25,14 +42,12 @@ const propertyIcons: { [key: string]: JSX.Element } = {
   starships: <BiRocket />,
   created: <BiTimeFive />,
   edited: <BiTimeFive />,
-  url: <BiLink />,
+  url: <BiLink />
 };
 
 export default function Character() {
   const navigate = useNavigate();
-  const character:any = useSelector(
-    (state: StateType) => state.character
-  );
+  const character: any = useSelector((state: StateType) => state.character);
   const [itemId, setItemId] = useState(null);
   const [itemIsFavorited, setItemIsFavorited] = useState(false);
   const favoritedCharacters = useSelector(
@@ -55,14 +70,14 @@ export default function Character() {
   const addToFavorites = (data: any) => {
     dispatcher({
       type: "ADD_FAVORITE",
-      payload: { dispatcher, character: { ...data, id: itemId } },
+      payload: { dispatcher, character: { ...data, id: itemId } }
     });
   };
 
-  const removeFromFavorites = (data: any) => {
+  const removeFromFavorites = () => {
     dispatcher({
       type: "DELETE_FAVORITE",
-      payload: { dispatcher, character: { characterId: itemId } },
+      payload: { dispatcher, character: { characterId: itemId } }
     });
   };
 
@@ -74,7 +89,7 @@ export default function Character() {
     "skin_color",
     "eye_color",
     "birth_year",
-    "gender",
+    "gender"
     // Add more properties as needed
   ];
 
@@ -123,7 +138,7 @@ export default function Character() {
           <div className="w-full flex flex-col items-center p-3 gap-2">
             <DomCondition condition={itemIsFavorited}>
               <button
-                onClick={() => removeFromFavorites(character)}
+                onClick={() => removeFromFavorites()}
                 className="min-[300px]:text-[12px] flex items-center justify-center w-full border-2 border-white text-white rounded-full p-3 gap-2"
               >
                 Remove from favorites

@@ -1,6 +1,6 @@
-import React, { useEffect, Fragment } from "react";
+import {  Fragment } from "react";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { StateType } from "@/store/initalState";
 import DomCondition from "../DomCondition";
 
@@ -72,7 +72,7 @@ export default function Pagination({ urlPattern = "/" }: { urlPattern?: any}) {
           {
             [1,2,3, 4, 5].map((j, i) => (
                 <Fragment key={i}>
-                    <div className={paginationButtonClass}>0</div>
+                    <div className={paginationButtonClass}>0{j}</div>
                 </Fragment>
             ))
           }

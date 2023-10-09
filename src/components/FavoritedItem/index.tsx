@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { BiChevronRight, BiInfoCircle, BiSolidBookmark, BiSolidSmile } from "react-icons/bi";
+import {  BiInfoCircle, BiSolidSmile } from "react-icons/bi";
 import SkeletonLine from "../SkeletonLine";
 import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";

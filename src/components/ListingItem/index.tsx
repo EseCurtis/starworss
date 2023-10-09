@@ -23,7 +23,7 @@ export const LisitingItem_skeleton = () => {
     <div className={`h-auto ${LisitingItemTwStyles}`}>
       <div className="w-full  flex flex-col p-3 bg-[#ffffff00] rounded-lg gap-1">
         {Array.from({ length: 3 }).map((item: any, i: any) => (
-          <SkeletonLine key={i} />
+          <SkeletonLine key={i+item}/>
         ))}
       </div>
     </div>
@@ -49,7 +49,7 @@ export const ListingItem: FC<FavoritedItemProps> = ({ data }) => {
     });
   };
 
-  const removeFromFavorites = (data: any) => {
+  const removeFromFavorites = () => {
     dispatcher({
       type: "DELETE_FAVORITE",
       payload: { dispatcher, character: { characterId: itemId } }
@@ -115,8 +115,8 @@ export const ListingItem: FC<FavoritedItemProps> = ({ data }) => {
       <div className="w-full flex flex-col items-center p-3 gap-2">
         <DomCondition condition={itemIsFavorited}>
           <button
-            onClick={() => removeFromFavorites(data)}
-            className=" min-[300px]:text-[12px] flex items-center justify-center w-full border border-2 border-white text-white rounded-full p-3 gap-2"
+            onClick={() => removeFromFavorites()}
+            className=" min-[300px]:text-[12px] flex items-center justify-center w-full border-2 border-white text-white rounded-full p-3 gap-2"
           >
             Remove from favorites
             <BiSolidBookmark className="text-yellow-400"/>

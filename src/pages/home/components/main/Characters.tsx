@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { LisitingItem_skeleton, ListingItem } from "@/components/ListingItem";
 import DomCondition from "@/components/DomCondition";
@@ -23,7 +23,7 @@ export default function Characters() {
       <DomCondition condition={charactersFetchStatus == "LOADING"}>
         {Array.from({ length: 9 }).map((j: any, i: number) => (
           <Fragment key={`skeleton_${i}`}>
-            <div className={`${characterItemTwStyle} h-[200px]`}>
+            <div className={`${characterItemTwStyle} ${j} h-[200px]`}>
               <LisitingItem_skeleton />
             </div>
           </Fragment>

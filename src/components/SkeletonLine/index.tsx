@@ -1,5 +1,4 @@
-import React from "react";
-import "./index.css"; // Import your CSS file for styling
+import "./index.css";
 
 const SkeletonLine = () => {
   return <div className="skeleton-line animate-pulse rounded-lg"></div>;
