@@ -40,7 +40,11 @@ export default function Favorites() {
       </DomCondition>
 
       <DomCondition condition={favoritedCharactersFetchStatus == "ERROR"}>
-        <h3>{favoritedCharacters.toString()}</h3>
+        <h3>{favoritedCharactersFetchStatus}</h3>
+      </DomCondition>
+
+      <DomCondition condition={favoritedCharacters.length < 1}>
+        <h3 className="px-2 animate-pulse">No favorites yet!</h3>
       </DomCondition>
     </div>
   );

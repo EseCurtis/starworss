@@ -10,13 +10,10 @@ export default function Characters() {
   const charactersFetchStatus = useSelector(
     (state: StateType) => state.charactersFetchStatus
   );
+  
   const charactersFetchStatusMessage = useSelector(
     (state: StateType) => state.charactersFetchStatusMessage
   );
-
-  useEffect(() => {
-    console.log(charactersFetchStatus);
-  }, [charactersFetchStatus]);
 
   const characterItemTwStyle =
     "w-[100%] h-[auto] max-[300px]:w-[100%] max-[760px]:mx-[auto] res2:w-[45%] sm:w-[100%]  res3:w-[45%] lg:w-[33%] 2xl:w-[33%] xl:w-[33%] l-animate--fade-in-up";

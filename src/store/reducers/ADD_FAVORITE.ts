@@ -3,7 +3,7 @@ import { dexieStore } from "..";
 
 const ADD_FAVORITE = (state: StateType, { dispatcher, character }: any): StateType => {
     const newFavorite = { characterId: character.id, name: character.name };
-    const isFavorite = state.favoritedCharacters.some((fav: any) => fav.characterId === character.id);
+    const isFavorite = state.favoritedCharacters.some((fav: any) => fav.characterId === character.characterId);
 
     if (isFavorite) {
         return {
@@ -17,6 +17,8 @@ const ADD_FAVORITE = (state: StateType, { dispatcher, character }: any): StateTy
         .add(newFavorite)
         .then(() => {
             const updatedFavorites = [...state.favoritedCharacters, newFavorite];
+
+            console.log(updatedFavorites)
             
             dispatcher({ type: "POPULATE_FAVORITES_DATA", payload: { favoritedCharacters: updatedFavorites } });
             dispatcher({ type: "FAVORITES_ADD:STATUS", payload: { status: "SUCCESS" } });

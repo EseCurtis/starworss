@@ -1,32 +1,14 @@
-//@ts-nocheck
-
+import React, { useEffect, useState } from "react";
+import { BiChevronLeft, BiRuler, BiDumbbell, BiPalette, BiCalendar, BiWorld, BiCameraMovie, BiDna, BiCar, BiRocket, BiTimeFive, BiLink, BiSolidRocket, BiSmile, BiSleepy, BiSolidEyedropper, BiSolidBookmark, BiBookmark, BiInfoCircle } from "react-icons/bi";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
+import DomCondition from "@/components/DomCondition";
 import styles from "@/utils/customStyles.module.css";
 import BrandLogo from "@/components/Brand";
 import InfoField from "@/components/InfoField";
 import { StateType } from "@/store/initalState";
-import { BiChevronLeft, BiRuler, BiDumbbell, BiPalette, BiCalendar, BiWorld, BiCameraMovie, BiDna, BiCar, BiRocket, BiTimeFive, BiLink, BiSolidRocket, BiSmile, BiSleepy, BiSolidEyedropper } from "react-icons/bi";
-import { useSelector } from "react-redux";
 
-interface characterType {
-  name?: string;
-  height?: string;
-  mass?: string;
-  hair_color?: string;
-  skin_color?: string;
-  eye_color?: string;
-  birth_year?: string;
-  gender?: string;
-  homeworld?: string;
-  films?: string[];
-  species?: string[];
-  vehicles?: string[];
-  starships?: string[];
-  created?: string;
-  edited?: string;
-  url?: string;
-}
 
-// Define a mapping of property names to icons
 const propertyIcons: { [key: string]: JSX.Element } = {
   name: <BiRuler />,
   height: <BiRuler />,
@@ -47,11 +29,43 @@ const propertyIcons: { [key: string]: JSX.Element } = {
 };
 
 export default function Character() {
-  const character: characterType = useSelector(
+  const navigate = useNavigate();
+  const character:any = useSelector(
     (state: StateType) => state.character
   );
+  const [itemId, setItemId] = useState(null);
+  const [itemIsFavorited, setItemIsFavorited] = useState(false);
+  const favoritedCharacters = useSelector(
+    (state: StateType) => state.favoritedCharacters
+  );
+  const dispatcher = useDispatch();
 
-  // Define an array of properties you want to display
+  useEffect(() => {
+    setItemIsFavorited(
+      !!favoritedCharacters?.find((character: any) => {
+        return character.characterId === itemId;
+      })
+    );
+  }, [favoritedCharacters]);
+
+  useEffect(() => {
+    setItemId(character?.url.trim().split("/").reverse()[1]);
+  }, [character.url]);
+
+  const addToFavorites = (data: any) => {
+    dispatcher({
+      type: "ADD_FAVORITE",
+      payload: { dispatcher, character: { ...data, id: itemId } },
+    });
+  };
+
+  const removeFromFavorites = (data: any) => {
+    dispatcher({
+      type: "DELETE_FAVORITE",
+      payload: { dispatcher, character: { characterId: itemId } },
+    });
+  };
+
   const propertiesToDisplay: string[] = [
     "name",
     "height",
@@ -66,8 +80,11 @@ export default function Character() {
 
   return (
     <div className="h-full w-full grid grid-rows-6 gap-2">
-      <div className=" row-span-1 flex  flex-wrap-reverse items-center w-full h-[auto] p-3 justify-between">
-        <b className="flex gap-2 items-center bg-white/10 border border-white/20 p-3 rounded-lg">
+      <div className="row-span-1 flex flex-wrap-reverse items-center w-full h-[auto] p-3 justify-between">
+        <b
+          onClick={() => navigate(-1)}
+          className="flex gap-2 items-center bg-white/10 border border-white/20 p-3 rounded-lg"
+        >
           <BiChevronLeft /> Go Back
         </b>
         <div className="mx-auto pr-[100px] py-4">
@@ -75,25 +92,55 @@ export default function Character() {
         </div>
       </div>
 
-      <div className=" h-full row-span-5 w-full flex justify-center items-center rounded-lg">
-      <div className={styles.custom_scrollbar+" flex flex-wrap max-h-[90%] p-4 bg-[#0000004f] backdrop-blur-xl border border-white/10 rounded-lg text-white max-w-[70vw] w-full overflow-scroll overflow-x-hidden"}>
-        <div className="w-[200px] h-[170px] flex items-start bg-gray-200 overflow-hidden">
-          <img
-            className="object-contain w-full"
-            src={`http://localhost:3000/search-images?q=${character?.name}`}
-            alt=""
-          />
+      <div className="h-full row-span-5 w-full flex justify-center items-center rounded-lg">
+        <div
+          className={
+            styles.custom_scrollbar +
+            " flex flex-wrap max-h-[90%] p-4 bg-[#0000004f] backdrop-blur-xl border border-white/10 rounded-lg text-white max-w-[70vw] w-full overflow-scroll overflow-x-hidden"
+          }
+        >
+          <div className="w-[200px] h-[170px] flex items-start bg-gray-200 overflow-hidden">
+            <img
+              className="object-contain w-full"
+              src={`http://localhost:3000/search-images?q=${character?.name}`}
+              alt=""
+            />
+          </div>
+          <div className="p-3">
+            {propertiesToDisplay.map(
+              (key) =>
+                character[key] && (
+                  <InfoField
+                    key={key}
+                    label={key}
+                    value={character[key]}
+                    icon={propertyIcons[key] || <BiSolidRocket />}
+                  />
+                )
+            )}
+          </div>
+
+          <div className="w-full flex flex-col items-center p-3 gap-2">
+            <DomCondition condition={itemIsFavorited}>
+              <button
+                onClick={() => removeFromFavorites(character)}
+                className="min-[300px]:text-[12px] flex items-center justify-center w-full border-2 border-white text-white rounded-full p-3 gap-2"
+              >
+                Remove from favorites
+                <BiSolidBookmark className="text-yellow-400" />
+              </button>
+            </DomCondition>
+            <DomCondition condition={!itemIsFavorited}>
+              <button
+                onClick={() => addToFavorites(character)}
+                className="min-[300px]:text-[12px] flex items-center justify-center w-full border-2 border-white text-white rounded-full p-3 gap-2"
+              >
+                Add to favorites
+                <BiBookmark />
+              </button>
+            </DomCondition>
+          </div>
         </div>
-        <div className="p-3">
-          {
-            
-          propertiesToDisplay.map((key) => (
-            character[key] && (
-              <InfoField key={key} label={key} value={character[key]} icon={propertyIcons[key] || <BiSolidRocket />} />
-            )
-          ))}
-        </div>
-      </div>
       </div>
     </div>
   );
