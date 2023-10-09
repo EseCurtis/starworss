@@ -99,10 +99,10 @@ export default function Character() {
             " flex flex-wrap max-h-[90%] p-4 bg-[#0000004f] backdrop-blur-xl border border-white/10 rounded-lg text-white max-w-[70vw] w-full overflow-scroll overflow-x-hidden"
           }
         >
-          <div className="w-[200px] h-[170px] flex items-start bg-gray-200 overflow-hidden">
+          <div className="w-[200px] h-[170px] flex items-start bg-gray-200 overflow-hidden rounded-lg">
             <img
               className="object-contain w-full"
-              src={`http://localhost:3000/search-images?q=${character?.name}`}
+              src={`https://imager-flax.vercel.app/search-images?q=${character?.name}`}
               alt=""
             />
           </div>

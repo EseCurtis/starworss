@@ -1,3 +1,7 @@
+html {
+    background: #000
+}
+
 .l-animate {
     &--fade-in {
         animation: fade-in 0.4s linear;
@@ -28,3 +32,5 @@
         transform: translateY(0);
     }
 }
+
+

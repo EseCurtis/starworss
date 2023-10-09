@@ -15,8 +15,13 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root" style="opacity: 0; transition: opacity 1s;"></div>
   <script type="module" src="/src/main.tsx"></script>
+  <script>
+    window.onload = () => {
+      document.querySelector("#root").style.opacity = 1
+    }
+  </script>
 </body>
 
 </html>

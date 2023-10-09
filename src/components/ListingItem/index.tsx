@@ -93,10 +93,10 @@ export const ListingItem: FC<FavoritedItemProps> = ({ data }) => {
 
   return (
     <div className={LisitingItemTwStyles}>
-      <div className="w-full h-[170px] flex items-start bg-gray-200 overflow-hidden">
+      <div className="w-full h-[170px] flex items-start bg-gray-200 overflow-hidden rounded-lg">
         <img
           className="object-contain w-full"
-          src={`http://localhost:3000/search-images?q=${data?.name}`}
+          src={`https://imager-flax.vercel.app/search-images?q=${data?.name}`}
           alt=""
         />
       </div>
