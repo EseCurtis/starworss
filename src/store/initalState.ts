@@ -17,6 +17,8 @@ export interface StateType {
   //favorite
   favoritedCharacters: any[];
   favoritedCharactersFetchStatus: FetchStatus;
+  favoritedCharactersAddStatus: FetchStatus;
+  favoritedCharactersDeleteStatus: FetchStatus;
 }
   
 export const InitialState: StateType = {
@@ -34,5 +36,7 @@ export const InitialState: StateType = {
 
     //favorite
     favoritedCharacters: [],
-    favoritedCharactersFetchStatus: 'LOADING'
+    favoritedCharactersFetchStatus: 'LOADING',
+    favoritedCharactersAddStatus: 'LOADING',
+    favoritedCharactersDeleteStatus: 'LOADING',
 };

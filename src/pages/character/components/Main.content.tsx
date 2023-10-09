@@ -1,12 +1,10 @@
 
 import DomCondition from "@/components/DomCondition";
+import Character from "./main/Character";
 import { StateType } from "@/store/initalState";
 import { useSelector } from "react-redux";
 
-
-
 export default function MainContent() {
-  const character = useSelector((state: StateType) => state.character);
   const characterFetchStatus = useSelector((state: StateType) => state.characterFetchStatus);
 
   return (
@@ -16,7 +14,7 @@ export default function MainContent() {
       </DomCondition>
 
       <DomCondition condition={characterFetchStatus == "SUCCESS"}>
-        <h1 className="text-[40px]">{JSON.stringify(character)}</h1>
+        <Character/>
       </DomCondition>
 
       <DomCondition condition={characterFetchStatus == "ERROR"}>

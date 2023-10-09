@@ -1,7 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './rootReducer';
+import MainDB from './DexieModel';
 
-const store = configureStore({
+// Define Redux store
+export const reduxStore = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -11,6 +13,9 @@ const store = configureStore({
     }),
 });
 
-export type AppDispatch = typeof store.dispatch;
+export const dexieStore = new MainDB();
 
-export default store;
+// Define AppDispatch type
+export type AppDispatch = typeof reduxStore.dispatch;
+
+

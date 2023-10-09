@@ -3,6 +3,8 @@ import Rswitch from '@/helpers/Rswitch';
 import { InitialState, StateType } from './initalState';
 import FETCH_ALL_CHARACTERS from './reducers/FETCH_ALL_CHARACTERS';
 import FETCH_CHARACTER from './reducers/FETCH_CHARACTER';
+import ADD_FAVORITE from './reducers/ADD_FAVORITE';
+import DELETE_FAVORITE from './reducers/DELETE_FAVORITE';
 
 export interface ActionType {
   type: string;
@@ -63,11 +65,35 @@ const rootReducer: Reducer<StateType, ActionType> = (state = InitialState, actio
       return { ...state, ...action.payload };
     })
 
+    .match("ADD_FAVORITES", () => {
+      ADD_FAVORITE(state, action.payload)
+      return state;
+    })
+
+    .match("DELETE_FAVORITE", () => {
+      DELETE_FAVORITE(state, action.payload)
+      return state;
+    })
+
     .match("FAVORITES_FETCH:STATUS", () => {
       return {
         ...state,
         favoritedCharactersFetchStatus: action.payload.status
-      } ;
+      };
+    })
+
+    .match("FAVORITES_ADD:STATUS", () => {
+      return {
+        ...state,
+        favoritedCharactersAddStatus: action.payload.status
+      };
+    })
+
+    .match("FAVORITES_DELETE:STATUS", () => {
+      return {
+        ...state,
+        favoritedCharactersDeleteStatus: action.payload.status
+      };
     })
 
     .default(() => state)

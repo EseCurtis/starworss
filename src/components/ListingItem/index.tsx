@@ -1,10 +1,15 @@
-import { FC } from "react";
-import { BiDumbbell, BiInfoCircle, BiRuler, BiSmile } from "react-icons/bi";
+import { FC, useEffect, useState } from "react";
+import {
+  BiBookmark,
+  BiDumbbell,
+  BiInfoCircle,
+  BiRuler,
+  BiSmile
+} from "react-icons/bi";
 import { BsGenderTrans } from "react-icons/bs";
-import Info from "./components/Info";
-import SkeletonLine from "../SkeletonLine";
+import InfoField from "@/components/InfoField";
+import SkeletonLine from "@/components/SkeletonLine";
 import { Link } from "react-router-dom";
-import URLtoID from "@/helpers/URLtoID";
 
 const LisitingItemTwStyles =
   "w-full  flex justify-center flex-col gap-2 p-2  bg-[#0000004f] backdrop-blur-xl border border-white/10  rounded-lg text-white";
@@ -26,6 +31,12 @@ interface FavoritedItemProps {
 }
 
 export const ListingItem: FC<FavoritedItemProps> = ({ data }) => {
+  const [itemId, setItemId] = useState(null);
+
+  useEffect(() => {
+    setItemId(data?.url.trim().split("/").reverse()[1]);
+  }, [data.url]);
+
   const infoData = [
     {
       label: "Name",
@@ -51,23 +62,32 @@ export const ListingItem: FC<FavoritedItemProps> = ({ data }) => {
 
   return (
     <div className={LisitingItemTwStyles}>
-      <div className="w-full  flex flex-col p-3 bg-[#ffffff00] rounded-lg relative">
+      <div className="w-full h-[100px] flex items-start aspect-w-4 aspect-h-3 bg-gray-200 overflow-hidden">
+        <img
+          className="object-contain w-full"
+          src={`http://localhost:3000/search-images?q=${data?.name}`}
+          alt=""
+        />
+      </div>
+
+      <div className="w-full  flex flex-col p-3 rounded-lg relative">
         {infoData.map((item, i) => (
-          <Info key={i} {...item} />
+          <InfoField key={i} {...item} />
         ))}
       </div>
+
       <div className="w-full flex gap-1">
         <div className="flex flex-col w-[50%] gap-1"></div>
         <div className="flex flex-col items-end w-[50%] gap-1"></div>
       </div>
 
-      {/* <div className="flex items-center justify-center m-3 absolute top-0 right-0 rounded-full">
-        <BiInfoCircle className="text-[20px]" />
-      </div> */}
-
-      <div className="w-full flex justify-center p-3">
-        <Link to={`/character?characterId=${URLtoID(data?.url)}`} className=" min-[300px]:text-[12px] flex items-center justify-center w-full bg-white text-black rounded-full p-3 gap-2">
-          See Complete Info <BiInfoCircle className="text-[16px]" />
+      <div className="w-full flex flex-col items-center p-3 gap-2">
+        <button className=" min-[300px]:text-[12px] flex items-center justify-center w-full border border-2 border-white text-white rounded-full p-3 gap-2">
+          Add to Favorites
+          <BiBookmark />
+        </button>
+        <Link to={`/character?characterId=${itemId}`} className=" min-[300px]:text-[12px] flex items-center justify-center w-full bg-white text-black rounded-full p-3 gap-2">
+          See More <BiInfoCircle className="text-[16px]" />
         </Link>
       </div>
     </div>
