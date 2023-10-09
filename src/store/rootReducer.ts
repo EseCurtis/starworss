@@ -25,6 +25,10 @@ const rootReducer: Reducer<StateType, ActionType> = (state = InitialState, actio
       return { ...state, ...action.payload };
     })
 
+    .match("POPULATE_PAGINATION_DATA", () => {
+      return { ...state, ...action.payload };
+    })
+
     .match("CHARACTERS_FETCH:STATUS", () => {
       return {
         ...state,

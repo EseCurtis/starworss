@@ -6,6 +6,11 @@ const FETCH_ALL_CHARACTERS = (state: StateType, dispatcher: any): void => {
     
     BASIC_FETCH(state.characters_api_url)
         .then((response) => {
+            dispatcher({ type: "POPULATE_PAGINATION_DATA", payload: { paginationData: {
+                next: response.next,
+                previous: response.previous,
+                count: response.count
+            } }})
             dispatcher({ type: "POPULATE_CHARACTERS_DATA", payload: { characters: response.results }})
             dispatcher({ type: "CHARACTERS_FETCH:STATUS", payload: { status: "SUCCESS" } })
         })

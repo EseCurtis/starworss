@@ -19,6 +19,9 @@ export interface StateType {
   favoritedCharactersFetchStatus: FetchStatus;
   favoritedCharactersAddStatus: FetchStatus;
   favoritedCharactersDeleteStatus: FetchStatus;
+
+  //pagination
+  paginationData: object
 }
   
 export const InitialState: StateType = {
@@ -39,4 +42,7 @@ export const InitialState: StateType = {
     favoritedCharactersFetchStatus: 'LOADING',
     favoritedCharactersAddStatus: 'LOADING',
     favoritedCharactersDeleteStatus: 'LOADING',
+
+    //pagination data
+    paginationData: {}
 };
