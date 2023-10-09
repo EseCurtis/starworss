@@ -5,6 +5,7 @@ import FETCH_ALL_CHARACTERS from './reducers/FETCH_ALL_CHARACTERS';
 import FETCH_CHARACTER from './reducers/FETCH_CHARACTER';
 import ADD_FAVORITE from './reducers/ADD_FAVORITE';
 import DELETE_FAVORITE from './reducers/DELETE_FAVORITE';
+import FETCH_FAVORITES from './reducers/FETCH_FAVORITES';
 
 export interface ActionType {
   type: string;
@@ -17,8 +18,7 @@ const rootReducer: Reducer<StateType, ActionType> = (state = InitialState, actio
   const matched = _Rswitch
 
     .match("FETCH_ALL_CHARACTERS", () => {
-      FETCH_ALL_CHARACTERS(state, action.payload.dispatcher);
-      return state;
+      return FETCH_ALL_CHARACTERS(state, action.payload);
     })
 
     .match("POPULATE_CHARACTERS_DATA", () => {
@@ -38,17 +38,10 @@ const rootReducer: Reducer<StateType, ActionType> = (state = InitialState, actio
     })
 
     .match("FETCH_CHARACTER", () => {
-      const fetchedCharacter = FETCH_CHARACTER(state, action.payload);
-
-      if(fetchedCharacter) {
-        return fetchedCharacter
-      } else {
-        return state
-      }
+      return FETCH_CHARACTER(state, action.payload);
     })
 
     .match("POPULATE_CHARACTER_DATA", () => {
-      console.log(action.payload)
       return { ...state, ...action.payload };
     })
 
@@ -60,8 +53,8 @@ const rootReducer: Reducer<StateType, ActionType> = (state = InitialState, actio
       };
     })
 
-    .match("FETCH_ALL_FAVORITES", () => {
-      FETCH_ALL_CHARACTERS(state, action.payload.dispatcher);
+    .match("FETCH_FAVORITES", () => {
+      FETCH_FAVORITES(state, action.payload.dispatcher);
       return state;
     })
 
@@ -69,14 +62,12 @@ const rootReducer: Reducer<StateType, ActionType> = (state = InitialState, actio
       return { ...state, ...action.payload };
     })
 
-    .match("ADD_FAVORITES", () => {
-      ADD_FAVORITE(state, action.payload)
-      return state;
+    .match("ADD_FAVORITE", () => {
+      return ADD_FAVORITE(state, action.payload);
     })
 
     .match("DELETE_FAVORITE", () => {
-      DELETE_FAVORITE(state, action.payload)
-      return state;
+      return DELETE_FAVORITE(state, action.payload);
     })
 
     .match("FAVORITES_FETCH:STATUS", () => {

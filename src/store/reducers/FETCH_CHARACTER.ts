@@ -1,7 +1,7 @@
 import BASIC_FETCH from "@/store/actions/BASIC_FETCH";
 import { StateType } from "@/store/initalState";
 
-const FETCH_CHARACTER = (state: StateType, {characterId, dispatcher}: any): StateType | boolean => {
+const FETCH_CHARACTER = (state: StateType, {characterId, dispatcher}: any): StateType => {
     const characterUrl = `${state.characters_api_url}/${characterId}/`
     const characterFromState = state.characters.find((character) => character.url === characterUrl);
 
@@ -18,7 +18,7 @@ const FETCH_CHARACTER = (state: StateType, {characterId, dispatcher}: any): Stat
         })
     }
 
-    return false;
+    return { ...state, characterFetchStatus: "LOADING" };
 }
 
 export default FETCH_CHARACTER

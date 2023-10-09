@@ -1,3 +1,5 @@
+import { StateType } from "@/store/initalState";
+
 class Rswitch<T> {
     private value: T;
     private matchedResult: any;
@@ -7,10 +9,11 @@ class Rswitch<T> {
       this.matchedResult = null;
     }
   
-    match(caseValue: T, caseCallback: () => any): this {
+    match(caseValue: T, caseCallback: () => StateType): this {
       if (this.matchedResult === null && this.value === caseValue) {
         this.matchedResult = caseCallback();
       }
+
       return this;
     }
   

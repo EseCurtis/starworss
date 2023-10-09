@@ -10,6 +10,7 @@ import { BsGenderTrans } from "react-icons/bs";
 import InfoField from "@/components/InfoField";
 import SkeletonLine from "@/components/SkeletonLine";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const LisitingItemTwStyles =
   "w-full  flex justify-center flex-col gap-2 p-2  bg-[#0000004f] backdrop-blur-xl border border-white/10  rounded-lg text-white";
@@ -32,6 +33,11 @@ interface FavoritedItemProps {
 
 export const ListingItem: FC<FavoritedItemProps> = ({ data }) => {
   const [itemId, setItemId] = useState(null);
+  const dispatcher = useDispatch();
+
+  const addToFavorites = (data: any) => {
+    dispatcher({ type: "ADD_FAVORITE", payload: { dispatcher, character: {...data, id: itemId } }  })
+  }
 
   useEffect(() => {
     setItemId(data?.url.trim().split("/").reverse()[1]);
@@ -82,7 +88,7 @@ export const ListingItem: FC<FavoritedItemProps> = ({ data }) => {
       </div>
 
       <div className="w-full flex flex-col items-center p-3 gap-2">
-        <button className=" min-[300px]:text-[12px] flex items-center justify-center w-full border border-2 border-white text-white rounded-full p-3 gap-2">
+        <button onClick={() => addToFavorites(data)}className=" min-[300px]:text-[12px] flex items-center justify-center w-full border border-2 border-white text-white rounded-full p-3 gap-2">
           Add to Favorites
           <BiBookmark />
         </button>

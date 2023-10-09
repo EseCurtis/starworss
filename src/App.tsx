@@ -13,6 +13,7 @@ export default function App() {
     createRoutesFromElements(
       <>
         <Route path="/" element={<Home />} />
+        <Route path="/:page" element={<Home />} />
         <Route path="/character" element={<Character />} />
       </>
     )

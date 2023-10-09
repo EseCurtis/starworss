@@ -8,7 +8,7 @@ export const reduxStore = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ['FETCH_ALL_CHARACTERS', 'FETCH_CHARACTER'],
+        ignoredActions: ['FETCH_ALL_CHARACTERS', 'FETCH_CHARACTER', "ADD_FAVORITE", "FETCH_FAVORITES"],
       },
     }),
 });

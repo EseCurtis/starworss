@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { LisitingItem_skeleton, ListingItem } from "@/components/ListingItem";
 import DomCondition from "@/components/DomCondition";
@@ -8,6 +8,10 @@ export default function Characters() {
   const characters = useSelector((state: StateType) => state.characters);
   const charactersFetchStatus = useSelector((state: StateType) => state.charactersFetchStatus);
   const charactersFetchStatusMessage = useSelector((state: StateType) => state.charactersFetchStatusMessage);
+
+  useEffect(() => {
+    console.log(charactersFetchStatus)
+  }, [charactersFetchStatus])
 
   const characterItemTwStyle = "w-[32%] h-[auto] max-[300px]:w-[100%]  max-[1162px]:w-[45%] max-[760px]:w-[95%] max-[760px]:mx-[auto] l-animate--fade-in-up";
 
